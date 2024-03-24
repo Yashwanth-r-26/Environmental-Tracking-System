@@ -199,7 +199,7 @@
         <canvas id="areaChart"></canvas>
     </div>
     <script>
-        // Fetch data from PHP script
+       
         fetch('http://localhost/dbms_project/Graph.php')
         .then(response => {
             if (!response.ok) {
@@ -210,15 +210,14 @@
         .then(data => {
             console.log(data); // Log the response data
             
-            // Extract state codes and sum of co, so2, and no2 from fetched JSON
+           
             const stateCodes = data.map(item => item.state);
             const sums = data.map(item => parseFloat(item.co_sum) + parseFloat(item.so2_sum) + parseFloat(item.no2_sum));
     
-            // Get the top 5 states with the highest sums
+           
             const topStates = stateCodes.slice(0, 5);
             const topSums = sums.slice(0, 5);
     
-            // Create bar chart
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
